@@ -1,34 +1,56 @@
-const inputEmail = document.getElementById('email-input')
-const form = document.getElementById('form')
-const errorMsg = document.getElementById('err-msg')
+const headerInputEmail = document.getElementById('illustrationH-email')
+const subInputEmail = document.getElementById('sub-email')
+const headerForm = document.getElementById('header-form')
+const subForm = document.getElementById('sub-form')
+const errorMsgSpan = document.getElementById('error_msg_span')
+const errorMsgSubscribe = document.getElementById('sub-err-msg')
 
-form.addEventListener('submit', (event) => {
+headerForm.addEventListener('submit',  (event) => {
     event.preventDefault()
     // VALIDATION FOR NO EMAIL
-    if (inputEmail.value === '') {
-        inputEmail.classList.add('input-err')
-        inputEmail.classList.add('margin-bottom')
-        errorMsg.innerHTML = 'Email can not be empty'
+    if (headerInputEmail.value === '') {
+        errorMsgSpan.innerHTML = 'Email can not be empty'
+        headerInputEmail.classList.add('err-msg-input')
         return
         // VALIDATION FOR NO --> @ <-- IN AN EMAIL
-    } else if (inputEmail.value.indexOf("@") < 0) {
-        inputEmail.classList.add('input-err')
-        inputEmail.classList.add('margin-bottom')
-        errorMsg.innerHTML = 'Please provide a valid email address'
+    } else if (headerInputEmail.value.indexOf("@") < 0) {
+        headerInputEmail.classList.add('err-msg-input')
+        errorMsgSpan.innerHTML = 'Please provide a valid email address'
         return
         // VALIDATION FOR NO --> .COM <-- IN AN EMAIL
-    } else if (inputEmail.value.indexOf(".com") < 0) {
-        inputEmail.classList.add('input-err')
-        inputEmail.classList.add('margin-bottom')
-        errorMsg.innerHTML = 'Please provide a valid email address'
+    } else if (headerInputEmail.value.indexOf(".com") < 0) {
+        headerInputEmail.classList.add('err-msg-input')
+        errorMsgSpan.innerHTML = 'Please provide a valid email address'
         return
     } else {
-        inputEmail.classList.remove('input-err')
-        errorMsg.classList.add('ok-msg')
-        errorMsg.innerHTML = ''
-        inputEmail.value = ''
-        // setTimeout(() => {
-        //     window.location.reload()
-        // }, 2000);
+        headerInputEmail.classList.remove('err-msg-input')
+        errorMsgSpan.innerHTML = ''
+        headerInputEmail.value = ''
+        alert('Email has been registered')
+    }
+})
+
+subForm.addEventListener('submit',  (event) => {
+    event.preventDefault()
+    // VALIDATION FOR NO EMAIL
+    if (subInputEmail.value === '') {
+        errorMsgSubscribe.innerHTML = 'Email can not be empty'
+        subInputEmail.classList.add('err-sub-input')
+        return
+        // VALIDATION FOR NO --> @ <-- IN AN EMAIL
+    } else if (subInputEmail.value.indexOf("@") < 0) {
+        subInputEmail.classList.add('err-sub-input')
+        errorMsgSubscribe.innerHTML = 'Please provide a valid email address'
+        return
+        // VALIDATION FOR NO --> .COM <-- IN AN EMAIL
+    } else if (subInputEmail.value.indexOf(".com") < 0) {
+        subInputEmail.classList.add('err-sub-input')
+        errorMsgSubscribe.innerHTML = 'Please provide a valid email address'
+        return
+    } else {
+        subInputEmail.classList.remove('err-sub-input')
+        errorMsgSubscribe.innerHTML = ''
+        subInputEmail.value = ''
+        alert('Email has been registered')
     }
 })
